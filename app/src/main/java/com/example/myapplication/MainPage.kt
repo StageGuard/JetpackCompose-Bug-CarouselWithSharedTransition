@@ -48,22 +48,20 @@ fun SharedTransitionScope.MainPage(
             snapAnimationSpec = spring(stiffness = Spring.StiffnessMedium),
         ),
     ) { index ->
-        Box {
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(imageData[index])
-                    .crossfade(true)
-                    .build(),
-                modifier = Modifier
-                    .sharedElement(
-                        rememberSharedContentState(SharedTransitionKey.IMAGE),
-                        animatedVisibilityScope
-                    )
-                    .height(213.dp)
-                    .clickable { onClickImage(imageData[index]) },
-                contentDescription = null,
-                contentScale = ContentScale.Crop
-            )
-        }
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(imageData[index])
+                .crossfade(true)
+                .build(),
+            modifier = Modifier
+                .sharedElement(
+                    rememberSharedContentState(SharedTransitionKey.IMAGE),
+                    animatedVisibilityScope
+                )
+                .height(213.dp)
+                .clickable { onClickImage(imageData[index]) },
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
     }
 }
